@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Global Plus — Premium Websites for Business | Miami</title>
+  <meta name="description" content="Global Plus — we build premium web solutions that take your business to the next level. B2B leads, cinematic design, high conversion. Office: Miami, FL.">
+  <link rel="icon" type="image/png" href="assets/logo.png">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Organization","name":"Global Plus","url":"https://unityspirit.github.io/global-plus-en/","logo":"https://unityspirit.github.io/global-plus-en/assets/logo.png","address":{"@type":"PostalAddress","streetAddress":"1200 Brickell Ave, Suite 1950","addressLocality":"Miami","addressRegion":"FL","postalCode":"33131","addressCountry":"US"},"telephone":"+1-305-555-0123","description":"Premium website development and web solutions for business"}
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- LOADER -->
+  <div id="loader">
+    <div class="loader-content">
+      <div class="loader-logo">
+        <img src="assets/logo.png" alt="Global Plus" class="loader-logo-img">
+        <span>GLOBAL <span class="gold">PLUS</span></span>
+      </div>
+      <div class="loader-bar"><div class="loader-fill" id="loaderFill"></div></div>
+      <div class="loader-pct" id="loaderPct">0%</div>
+    </div>
+  </div>
+
+  <!-- CANVAS -->
+  <canvas id="scrollCanvas"></canvas>
+
+  <!-- HEADER -->
+  <header class="site-header" id="siteHeader">
+    <div class="header-inner">
+      <a href="#" class="logo">
+        <img src="assets/logo.png" alt="Global Plus" class="logo-img">
+        <span class="logo-text">GLOBAL <span class="gold">PLUS</span></span>
+      </a>
+      <nav class="desktop-nav">
+        <a href="#" class="nav-link active" data-section="0">Home</a>
+        <a href="#" class="nav-link" data-section="1">About</a>
+        <a href="#" class="nav-link" data-section="2">Pain Points</a>
+        <a href="#" class="nav-link" data-section="3">Solutions</a>
+        <a href="#" class="nav-link" data-section="4">Portfolio</a>
+        <a href="#" class="nav-link" data-section="5">Process</a>
+        <a href="#" class="nav-link" data-section="6">Contact</a>
+      </nav>
+      <a href="tel:+13055550123" class="header-cta">Start a Project</a>
+      <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+    <nav class="mobile-nav" id="mobileNav">
+      <a href="#" class="nav-link" data-section="0">Home</a>
+      <a href="#" class="nav-link" data-section="1">About</a>
+      <a href="#" class="nav-link" data-section="2">Pain Points</a>
+      <a href="#" class="nav-link" data-section="3">Solutions</a>
+      <a href="#" class="nav-link" data-section="4">Portfolio</a>
+      <a href="#" class="nav-link" data-section="5">Process</a>
+      <a href="#" class="nav-link" data-section="6">Contact</a>
+    </nav>
+  </header>
+
+  <div id="ui-layer">
+
+    <!-- 0: HERO -->
+    <section class="page" id="page-0">
+      <div class="page-inner hero-content">
+        <div class="hero-badge">WEB · DESIGN · DIGITAL</div>
+        <h1 class="hero-title">
+          <span class="hero-line1">ELEVATE</span>
+          <span class="hero-line2">YOUR BUSINESS</span>
+          <span class="hero-line3 gold-text">TO THE NEXT LEVEL</span>
+        </h1>
+        <p class="hero-sub">We build premium websites that don't just look stunning — they work as your best sales manager: 24/7, no days off, zero mistakes.</p>
+        <div class="hero-buttons">
+          <a href="#" class="btn btn-primary" data-section="6">Start a Project</a>
+          <a href="#" class="btn btn-outline" data-section="6">Free Niche Audit</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat"><span class="stat-num gold-text">200+</span><span class="stat-label">Niches Covered</span></div>
+          <div class="stat"><span class="stat-num gold-text">3×</span><span class="stat-label">Conversion Growth</span></div>
+          <div class="stat"><span class="stat-num gold-text">48</span><span class="stat-label">Hours to Launch</span></div>
+          <div class="stat"><span class="stat-num gold-text">100%</span><span class="stat-label">Results Guaranteed</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 1: ABOUT -->
+    <section class="page" id="page-1">
+      <div class="page-inner">
+        <h2 class="section-title">About <span class="gold-text">Global Plus</span></h2>
+        <p class="section-sub">A real company. A real office. Real results.</p>
+        <div class="about-layout-new">
+          <!-- Column 1 (Wide) -->
+          <div class="about-col about-col-wide">
+            <div class="about-main card reveal">
+              <p class="about-lead">We're a team that got tired of mediocrity in the digital market. While other agencies build cookie-cutter sites on outdated templates, we create <strong>digital assets</strong> that generate B2B leads and justify premium pricing.</p>
+              <p>Every project starts with deep niche analysis: who your customer is, why they choose your competitor, and how we fix that — visually and technically.</p>
+            </div>
+            <div class="niches-section card reveal" style="padding: 24px;">
+              <h3 class="niches-title">We build websites for <span class="gold-text">any industry</span></h3>
+              <div class="niches-tags">
+                <span>Healthcare</span><span>Dentistry</span><span>Med Spas</span><span>Restaurants</span><span>HoReCa</span>
+                <span>Construction</span><span>Architecture</span><span>Interior Design</span><span>IT Outsourcing</span>
+                <span>Legal Services</span><span>Cleaning</span><span>Auto Services</span><span>Detailing</span>
+                <span>Fitness</span><span>Education</span><span>Tourism</span><span>Logistics</span><span>Manufacturing</span>
+                <span>Custom Furniture</span><span>Veterinary</span><span>Grooming</span><span>Print & Media</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Column 2 -->
+          <div class="about-col">
+            <div class="card reveal"><div class="card-icon">🎯</div><h3>Results-Driven</h3><p>Not just "beautiful design" — measurable growth in leads and conversions.</p></div>
+            <div class="card reveal"><div class="card-icon">🌍</div><h3>We Know the US Market</h3><p>Deep understanding of the Miami, South Florida, and nationwide markets. Tailored for every audience.</p></div>
+          </div>
+
+          <!-- Column 3 -->
+          <div class="about-col">
+            <div class="card reveal"><div class="card-icon">⚡</div><h3>Speed</h3><p>48 hours from brief to launch. No delays, no endless revision cycles (excluding holidays and weekends).</p></div>
+            <div class="card reveal"><div class="card-icon">🔒</div><h3>Legal Protection</h3><p>Global Plus LLC. We work under contract with clearly defined deadlines and guarantees.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2: PAIN POINTS -->
+    <section class="page" id="page-2">
+      <div class="page-inner">
+        <h2 class="section-title">Why <span class="gold-text">you're losing money</span> right now</h2>
+        <p class="section-sub">An outdated website isn't just ugly. It's costing you real revenue.</p>
+        <div class="problems-grid">
+          <div class="problem-card card reveal">
+            <div class="problem-num">01</div>
+            <h3>Your ad budget is burning</h3>
+            <p><strong>Pain:</strong> Google Ads drives traffic, but leads don't convert. The reason — your site doesn't sell.</p>
+            <p class="problem-result">→ The average business wastes <span class="gold-text">60–80% of its ad spend</span> due to a poorly designed landing page.</p>
+          </div>
+          <div class="problem-card card reveal">
+            <div class="problem-num">02</div>
+            <h3>B2B partners go to competitors</h3>
+            <p><strong>Pain:</strong> A corporate client opens your site and closes it in 3 seconds. 2015-era design = zero trust = no deal.</p>
+            <p class="problem-result">→ <span class="gold-text">73% of B2B decisions</span> are made based on a company's digital presence.</p>
+          </div>
+          <div class="problem-card card reveal">
+            <div class="problem-num">03</div>
+            <h3>You can't justify premium pricing</h3>
+            <p><strong>Pain:</strong> Clients ask why it costs so much. Your website doesn't back it up — it looks cheaper than your actual services.</p>
+            <p class="problem-result">→ A premium website <span class="gold-text">sells your value</span> before your sales team even picks up the phone.</p>
+          </div>
+          <div class="problem-card card reveal">
+            <div class="problem-num">04</div>
+            <h3>Missing from the mobile web</h3>
+            <p><strong>Pain:</strong> 78% of your potential clients browse on their phones. If your site isn't responsive — you don't exist.</p>
+            <p class="problem-result">→ Mobile-first isn't optional. It's <span class="gold-text">the mandatory standard of 2025.</span></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3: SOLUTIONS -->
+    <section class="page" id="page-3">
+      <div class="page-inner">
+        <h2 class="section-title">Cinematic <span class="gold-text">Landing Pages</span></h2>
+        <p class="section-sub">Three packages. One format — cinema. Turnaround time: <strong class="gold-text">up to 48 hours.</strong></p>
+        <div class="solutions-grid">
+
+          <!-- PACKAGE 1 -->
+          <div class="solution-card card reveal" id="pkg-1">
+            <div class="solution-icon">🎬</div>
+            <div class="solution-tag tag-base">START</div>
+            <h3>Template Cinematic Landing</h3>
+            <p class="solution-pitch">A ready-made cinematic template for your niche. We only replace the content — text, services, pricing, contacts. The result — a world-class website at a fraction of the cost, delivered in under 48 hours.</p>
+            <ul class="solution-features">
+              <li>Template matched to your industry</li>
+              <li>Cinematic video background</li>
+              <li>Your text, services, pricing & contacts</li>
+              <li>Responsive for mobile + desktop</li>
+            </ul>
+            <div class="solution-deadline">⏱ Turnaround: up to 48 hours</div>
+            <div class="solution-price">$899</div>
+            <a href="#" class="btn btn-outline solution-cta" data-section="6">Order Now →</a>
+          </div>
+
+          <!-- PACKAGE 2 -->
+          <div class="solution-card card reveal featured-card" id="pkg-2">
+            <div class="featured-badge">★ POPULAR</div>
+            <div class="solution-icon">🎬✨</div>
+            <div class="solution-tag tag-pro">PRO</div>
+            <h3>Template + Custom Modifications</h3>
+            <p class="solution-pitch">Everything in the Start package, plus custom modifications for your business: additional screens, video players, sliders, expanded video backgrounds. Your website becomes truly yours.</p>
+            <ul class="solution-features">
+              <li>Everything from the Start package</li>
+              <li>Additional screens / sections on request</li>
+              <li>Video player and sliders for your content</li>
+              <li>Expanded cinematic video reel</li>
+              <li>Up to 3 revision rounds</li>
+              <li>Priority support for 30 days</li>
+            </ul>
+            <div class="solution-deadline">⏱ Turnaround: up to 48 hours</div>
+            <div class="solution-price">from $1,599</div>
+            <a href="#" class="btn btn-primary solution-cta" data-section="6">Order Now →</a>
+          </div>
+
+          <!-- PACKAGE 3 -->
+          <div class="solution-card card reveal" id="pkg-3">
+            <div class="solution-icon">🏆</div>
+            <div class="solution-tag tag-custom">EXCLUSIVE</div>
+            <h3>Custom Cinematic Landing</h3>
+            <p class="solution-pitch">Built from scratch for your brand: unique design, original video concept, exclusive VEO clips, branding, animations. World-class quality with zero compromise.</p>
+            <ul class="solution-features">
+              <li>Competitive analysis + strategy</li>
+              <li>Unique design and logo</li>
+              <li>Exclusive VEO 3.1 video clips</li>
+              <li>Canvas ScrollEngine 672+ frames</li>
+              <li>CRM integration + Telegram bot</li>
+              <li>SEO + Schema.org + analytics</li>
+            </ul>
+            <div class="solution-deadline">⏱ Turnaround: discussed individually</div>
+            <div class="solution-price">from $2,999</div>
+            <a href="#" class="btn btn-outline solution-cta" data-section="6">Let's Talk →</a>
+          </div>
+
+        </div>
+        <div class="niches-section reveal" style="margin-top:16px">
+          <h3 class="niches-title">Additional <span class="gold-text">services</span></h3>
+          <p style="text-align:center;margin-bottom:8px">Domain + hosting setup + publishing — <strong class="gold-text">from $35</strong></p>
+          <p style="text-align:center;font-size:12px">Also: website maintenance & updates, domain renewal, technical support.</p>
+      </div>
+    </section>
+
+    <!-- 4: WEBSITE TEMPLATES -->
+    <section class="page" id="page-4">
+      <div class="page-inner" style="padding-bottom:0">
+        <h2 class="section-title">Website <span class="gold-text">Templates</span></h2>
+        <p class="section-sub">Choose your website!</p>
+      </div>
+      <div class="cases-carousel-wrap">
+        <div class="cases-scroll" id="casesScroll">
+          <a href="https://unityspirit.github.io/europa-clinic-en/" target="_blank" class="case-card card">
+            <div class="case-video-wrap"><video src="videos/europa-clinic.mp4" muted loop playsinline preload="metadata"></video></div>
+            <div class="case-info">
+              <div class="case-niche">🏥 Healthcare</div>
+              <h3>For Clinics & Medical Practices</h3>
+              <span class="case-link">View Project →</span>
+            </div>
+          </a>
+          <a href="https://unityspirit.github.io/elite-detailing-en/" target="_blank" class="case-card card">
+            <div class="case-video-wrap"><video src="videos/elite-detailing.mp4" muted loop playsinline preload="metadata"></video></div>
+            <div class="case-info">
+              <div class="case-niche">🚗 Auto Business</div>
+              <h3>For Detailing Centers, Auto Services & Car Washes</h3>
+              <span class="case-link">View Project →</span>
+            </div>
+          </a>
+          <a href="https://unityspirit.github.io/stroyka-pro-en/" target="_blank" class="case-card card">
+            <div class="case-video-wrap"><video src="videos/stroyka-pro.mp4" muted loop playsinline preload="metadata"></video></div>
+            <div class="case-info">
+              <div class="case-niche">🏗️ Construction</div>
+              <h3>For Construction Companies & Remodeling</h3>
+              <span class="case-link">View Project →</span>
+            </div>
+          </a>
+          <a href="https://unityspirit.github.io/arch-design-en/" target="_blank" class="case-card card">
+            <div class="case-video-wrap"><video src="videos/arch-design.mp4" muted loop playsinline preload="metadata"></video></div>
+            <div class="case-info">
+              <div class="case-niche">🎨 Design</div>
+              <h3>For Interior Design Firms & Architecture Studios</h3>
+              <span class="case-link">View Project →</span>
+            </div>
+          </a>
+          <a href="https://unityspirit.github.io/lumiere-clinic-en/" target="_blank" class="case-card card">
+            <div class="case-video-wrap"><video src="videos/lumiere-clinic.mp4" muted loop playsinline preload="metadata"></video></div>
+            <div class="case-info">
+              <div class="case-niche">💊 Med Spa v2</div>
+              <h3>For Aesthetic Medicine & Cosmetology Clinics</h3>
+              <span class="case-link">View Project →</span>
+            </div>
+          </a>
+          <a href="https://unityspirit.github.io/elite-detailing-v2-en/" target="_blank" class="case-card card">
+            <div class="case-video-wrap"><video src="videos/elite-detailing-v2.mp4" muted loop playsinline preload="metadata"></video></div>
+            <div class="case-info">
+              <div class="case-niche">🚗 Auto Business v2</div>
+              <h3>For Auto Detailing, Auto Services & Car Washes</h3>
+              <span class="case-link">View Project →</span>
+            </div>
+          </a>
+          <a href="https://unityspirit.github.io/fur-natural-en/" target="_blank" class="case-card card">
+            <div class="case-video-wrap"><video src="videos/fur-natural.mp4" muted loop playsinline preload="metadata"></video></div>
+            <div class="case-info">
+              <div class="case-niche">🧥 Fashion</div>
+              <h3>For Fur Companies, Boutiques & Clothing Stores</h3>
+              <span class="case-link">View Project →</span>
+            </div>
+          </a>
+          <a href="https://unityspirit.github.io/zksk-en/" target="_blank" class="case-card card">
+            <div class="case-video-wrap"><video src="videos/zksk.mp4" muted loop playsinline preload="metadata"></video></div>
+            <div class="case-info">
+              <div class="case-niche">🏢 Construction v2</div>
+              <h3>For Developers, Real Estate & Construction Firms</h3>
+              <span class="case-link">View Project →</span>
+            </div>
+          </a>
+        </div>
+        <div class="cases-nav">
+          <button class="cases-arrow cases-prev" id="casesPrev" aria-label="Previous">‹</button>
+          <span class="cases-hint">← scroll →</span>
+          <button class="cases-arrow cases-next" id="casesNext" aria-label="Next">›</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5: HOW WE WORK -->
+    <section class="page" id="page-5">
+      <div class="page-inner">
+        <h2 class="section-title">Our <span class="gold-text">Process</span></h2>
+        <p class="section-sub">A transparent pipeline from briefing to final delivery</p>
+        <div class="process-flow">
+          <div class="process-step card reveal">
+            <div class="step-num gold-text">01</div>
+            <div class="step-icon">📋</div>
+            <h3>Briefing</h3>
+            <p>A call or in-office meeting. We dive deep into your business: who's your customer, who's your competition, what you sell, and your price point. 60 minutes — and we know everything we need.</p>
+          </div>
+          <div class="process-arrow">→</div>
+          <div class="process-step card reveal">
+            <div class="step-num gold-text">02</div>
+            <div class="step-icon">🔍</div>
+            <h3>Niche Analysis</h3>
+            <p>We study your top 5 competitors. We find their weaknesses. We determine exactly what needs to be on your site so clients choose you — not them.</p>
+          </div>
+          <div class="process-arrow">→</div>
+          <div class="process-step card reveal">
+            <div class="step-num gold-text">03</div>
+            <div class="step-icon">✏️</div>
+            <h3>UX/UI Design</h3>
+            <p>Wireframe → Design system → Full visualization of all screens. Approval in 1–2 iterations. No "make it like Apple" without a brief.</p>
+          </div>
+          <div class="process-arrow">→</div>
+          <div class="process-step card reveal">
+            <div class="step-num gold-text">04</div>
+            <div class="step-icon">⚙️</div>
+            <h3>Development</h3>
+            <p>Coding, cinematic video background, form integration with CRM, SEO optimization, responsive design. Tested on 12 devices.</p>
+          </div>
+          <div class="process-arrow">→</div>
+          <div class="process-step card reveal">
+            <div class="step-num gold-text">05</div>
+            <div class="step-icon">🚀</div>
+            <h3>Launch</h3>
+            <p>Deployment, domain setup. 30 days of post-launch support included.</p>
+          </div>
+        </div>
+        <div class="process-guarantee card reveal">
+          <span class="guarantee-icon">⚡</span>
+          <div><strong class="gold-text">From first contact to finished website — IN UNDER 48 HOURS!</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6: CONTACT -->
+    <section class="page" id="page-6">
+      <div class="page-inner">
+        <h2 class="section-title">Request a free <span class="gold-text">niche audit</span></h2>
+        <p class="section-sub">Free audit: we'll show you what your business is losing because of your current website</p>
+        <div class="contact-layout">
+          <form class="contact-form card reveal" id="contactForm">
+            <input type="text" placeholder="Your name and company" required id="inputName">
+            <input type="tel" placeholder="+1 (___) ___-____" required id="inputPhone">
+            <select id="inputNiche">
+              <option value="">Your industry</option>
+              <option>Healthcare / Beauty</option>
+              <option>Restaurants / HoReCa</option>
+              <option>Construction / Remodeling</option>
+              <option>Architecture / Design</option>
+              <option>IT / Consulting</option>
+              <option>Auto Business / Detailing</option>
+              <option>Fitness / Sports</option>
+              <option>Education</option>
+              <option>Tourism / Hotels</option>
+              <option>Manufacturing</option>
+              <option>Other</option>
+            </select>
+            <select id="inputBudget">
+              <option value="">Website budget</option>
+              <option>$500 – $1,000</option>
+              <option>$1,000 – $2,000</option>
+              <option>$2,000 – $3,500</option>
+              <option>$3,500+</option>
+            </select>
+            <textarea placeholder="What do you want from your website? What's your current site (link)?" rows="3" id="inputMessage"></textarea>
+            <button type="submit" class="btn btn-primary btn-full" id="submitBtn">Get a Free Niche Audit</button>
+            <p class="form-note">We'll respond within 2 hours during business hours. No spam.</p>
+          </form>
+          <div class="contact-info">
+            <div class="card contact-card reveal">
+              <div class="contact-row"><span class="contact-icon">📍</span><div><strong>Office</strong><span>1200 Brickell Ave, Suite 1950<br>Miami, FL 33131</span></div></div>
+              <div class="contact-row"><span class="contact-icon">📞</span><div><strong>Phone</strong><a href="tel:+13055550123">+1 (305) 555-0123</a></div></div>
+              <div class="contact-row"><span class="contact-icon">📧</span><div><strong>Email</strong><a href="mailto:info@globalplus.io">info@globalplus.io</a></div></div>
+              <div class="contact-row"><span class="contact-icon">💬</span><div><strong>Telegram</strong><a href="https://t.me/globalplus" target="_blank">@globalplus</a></div></div>
+              <div class="contact-row"><span class="contact-icon">🕐</span><div><strong>Business Hours</strong><span>Mon–Fri: 9:00 AM – 7:00 PM<br>Sat: 10:00 AM – 3:00 PM</span></div></div>
+            </div>
+            <div class="card contact-legal reveal">
+              <p class="legal-title">Company Details</p>
+              <p>Global Plus LLC</p>
+              <p>1200 Brickell Ave, Suite 1950, Miami, FL 33131</p>
+              <p>EIN: available upon request</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- end scroll-container -->
+
+  <script src="app.js"></script>
+</body>
+</html>

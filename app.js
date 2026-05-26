@@ -2,7 +2,7 @@
 'use strict';
 
 const TOTAL_FRAMES = 672;
-const LERP = 0.08;
+const LERP = 0.02;
 const CONCURRENCY = 48;
 
 const isMobile = /Mobi|Android|iPhone/i.test(navigator.userAgent) || innerWidth < 768;

@@ -1,4 +1,4 @@
-﻿/* ─── GLOBAL PLUS — ScrollCanvas Engine (Native Scroll-Snap) ─── */
+﻿/* ─── Unity Spirit Partners — ScrollCanvas Engine (Native Scroll-Snap) ─── */
 'use strict';
 
 const TOTAL_FRAMES = 672;
@@ -156,7 +156,7 @@ if (form) {
     const name = document.getElementById('inputName').value;
     const phone = document.getElementById('inputPhone').value;
     const niche = document.getElementById('inputNiche').value;
-    const msg = `🔔 Новая заявка GLOBAL PLUS\n👤 ${name}\n📞 ${phone}\n🏷️ Ниша: ${niche}`;
+    const msg = `🔔 Новая заявка Unity Spirit Partners\n👤 ${name}\n📞 ${phone}\n🏷️ Ниша: ${niche}`;
     fetch(`https://api.telegram.org/bot__BOT_TOKEN__/sendMessage`, {
       method: 'POST', headers: {'Content-Type':'application/json'},
       body: JSON.stringify({ chat_id: '__CHAT_ID__', text: msg })

@@ -288,3 +288,10 @@ a.case-card:hover .case-link{color:#fff !important}
 .footer-links a{color:rgba(255,255,255,.6) !important;text-decoration:none;font-size:12px;transition:color .3s;text-shadow:none !important}
 .footer-links a:hover{color:var(--gold) !important}
 .footer-copy{font-size:11px;color:rgba(255,255,255,.35) !important;text-shadow:none !important}
+
+/* MESSENGER BUTTONS */
+.messenger-buttons{display:flex;gap:8px;margin-top:8px}
+.msg-btn{display:inline-flex;align-items:center;gap:4px;padding:6px 14px;border-radius:8px;font-size:12px;font-weight:600;text-decoration:none;transition:transform .2s,opacity .2s;text-shadow:none !important}
+.msg-btn:hover{transform:translateY(-1px);opacity:.9}
+.msg-wa{background:#25D366;color:#fff !important}
+.msg-tg{background:#2AABEE;color:#fff !important}

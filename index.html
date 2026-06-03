@@ -505,6 +505,20 @@
     </div>
   </footer>
 
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+  <script>
+    firebase.initializeApp({
+      apiKey: "AIzaSyBb710BSQciEvFmNN9nsdW7xeOBXIZaZ1k",
+      authDomain: "global-market-79c3f.firebaseapp.com",
+      projectId: "global-market-79c3f",
+      storageBucket: "global-market-79c3f.firebasestorage.app",
+      messagingSenderId: "1090010864051",
+      appId: "1:1090010864051:web:e3a45063477744dea913c6"
+    });
+    window.db = firebase.firestore();
+  </script>
   <script src="app.js"></script>
 </body>
 </html>

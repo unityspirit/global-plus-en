@@ -1,4 +1,4 @@
-﻿/* ─── Unity Spirit Partners — ScrollCanvas Engine (Native Scroll-Snap) ─── */
+/* ─── Unity Spirit Partners — ScrollCanvas Engine (Native Scroll-Snap) ─── */
 'use strict';
 
 const TOTAL_FRAMES = 672;
@@ -147,23 +147,58 @@ animate();
   },400);
 })();
 
-/* ── Contact Form ── */
+/* ── Contact Form → Firestore + Telegram ── */
 const form = document.getElementById('contactForm');
 if (form) {
-  form.addEventListener('submit', e => {
+  form.addEventListener('submit', async e => {
     e.preventDefault();
     const btn = document.getElementById('submitBtn');
-    const name = document.getElementById('inputName').value;
-    const phone = document.getElementById('inputPhone').value;
+    const name = document.getElementById('inputName').value.trim();
+    const phone = document.getElementById('inputPhone').value.trim();
     const niche = document.getElementById('inputNiche').value;
-    const msg = `🔔 Новая заявка Unity Spirit Partners\n👤 ${name}\n📞 ${phone}\n🏷️ Ниша: ${niche}`;
-    fetch(`https://api.telegram.org/bot__BOT_TOKEN__/sendMessage`, {
-      method: 'POST', headers: {'Content-Type':'application/json'},
-      body: JSON.stringify({ chat_id: '__CHAT_ID__', text: msg })
-    }).catch(() => {});
-    btn.textContent = '✓ Request submitted! Ответим в течение 2 часов.';
-    btn.style.background = '#4FC3F7'; btn.style.color = '#000';
-    setTimeout(() => { btn.textContent = 'Get a Free Niche Audit'; btn.style.background = ''; btn.style.color = ''; }, 4000);
+    const budget = document.getElementById('inputBudget').value;
+    const message = document.getElementById('inputMessage').value.trim();
+
+    if (!name || !phone) return;
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
+
+    const lead = {
+      name, phone, niche, budget, message,
+      source: 'unityspiritpartners.com',
+      createdAt: new Date().toISOString(),
+      status: 'new'
+    };
+
+    /* 1. Save to Firestore */
+    try {
+      if (window.db) {
+        await window.db.collection('leads').add(lead);
+      }
+    } catch (err) { console.warn('Firestore:', err); }
+
+    /* 2. Send to Telegram */
+    try {
+      const TG_TOKEN = '8584091506:AAFHWXyPuCS-cQnPnPo8Hu5HGJm-0eHrDsw';
+      const TG_CHAT = window.__TG_CHAT_ID || '';
+      if (TG_CHAT) {
+        const text = `🔔 New Lead — Unity Spirit Partners\n👤 ${name}\n📞 ${phone}\n🏷️ Niche: ${niche || '—'}\n💰 Budget: ${budget || '—'}\n💬 ${message || '—'}`;
+        await fetch(`https://api.telegram.org/bot${TG_TOKEN}/sendMessage`, {
+          method: 'POST', headers: {'Content-Type':'application/json'},
+          body: JSON.stringify({ chat_id: TG_CHAT, text, parse_mode: 'HTML' })
+        });
+      }
+    } catch (err) { console.warn('Telegram:', err); }
+
+    /* 3. Success */
+    btn.textContent = '✓ Request submitted! We\'ll respond within 2 hours.';
+    btn.style.background = '#25D366'; btn.style.color = '#fff';
+    form.reset();
+    setTimeout(() => {
+      btn.textContent = 'Get a Free Niche Audit';
+      btn.style.background = ''; btn.style.color = '';
+      btn.disabled = false;
+    }, 5000);
   });
 }
 

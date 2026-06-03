@@ -1,4 +1,4 @@
-﻿@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;900&family=Inter:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;900&family=Inter:wght@300;400;500;600&display=swap');
 
 /* Animated angle for conic-gradient border spin */
 @property --border-angle {
@@ -277,3 +277,14 @@ a.case-card:hover .case-link{color:#fff !important}
   .btn{width:100%;text-align:center}
   /* removed about-cards */
 }
+
+/* FOOTER */
+.site-footer{position:relative;z-index:10;background:rgba(5,5,10,.95);border-top:1px solid rgba(212,169,75,.15);padding:32px 24px 24px;text-align:center}
+.footer-inner{max-width:600px;margin:0 auto}
+.footer-brand{display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:16px}
+.footer-logo-img{width:28px;height:28px;object-fit:contain;border-radius:6px}
+.footer-logo-text{font-family:var(--font-h);font-size:15px;color:#fff;letter-spacing:3px;font-weight:700;text-shadow:var(--ts)}
+.footer-links{display:flex;gap:24px;justify-content:center;flex-wrap:wrap;margin-bottom:12px}
+.footer-links a{color:rgba(255,255,255,.6) !important;text-decoration:none;font-size:12px;transition:color .3s;text-shadow:none !important}
+.footer-links a:hover{color:var(--gold) !important}
+.footer-copy{font-size:11px;color:rgba(255,255,255,.35) !important;text-shadow:none !important}

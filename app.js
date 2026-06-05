@@ -180,7 +180,7 @@ if (form) {
     /* 2. Send to Telegram */
     try {
       const TG_TOKEN = '8584091506:AAFHWXyPuCS-cQnPnPo8Hu5HGJm-0eHrDsw';
-      const TG_CHAT = window.__TG_CHAT_ID || '';
+      const TG_CHAT = '8538272428';
       if (TG_CHAT) {
         const text = `🔔 New Lead — Unity Spirit Partners\n👤 ${name}\n📞 ${phone}\n🏷️ Niche: ${niche || '—'}\n💰 Budget: ${budget || '—'}\n💬 ${message || '—'}`;
         await fetch(`https://api.telegram.org/bot${TG_TOKEN}/sendMessage`, {

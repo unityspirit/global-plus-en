@@ -51,7 +51,7 @@ function loadFrame(index){
 }
 
 let preloaderDismissed = false;
-const PRELOADER_THRESHOLD = 0.15;
+const PRELOADER_THRESHOLD = 0.03;
 
 async function loadAllFrames(){
   let loaded = 0;

@@ -50,6 +50,9 @@ function loadFrame(index){
   });
 }
 
+let preloaderDismissed = false;
+const PRELOADER_THRESHOLD = 0.15;
+
 async function loadAllFrames(){
   let loaded = 0;
   const queue = Array.from({length:TOTAL_FRAMES},(_,i)=>i);
@@ -62,6 +65,13 @@ async function loadAllFrames(){
       const pct=Math.floor((loaded/TOTAL_FRAMES)*100);
       loaderFill.style.width=pct+'%';
       loaderPct.textContent=pct+'%';
+      if(!preloaderDismissed && loaded/TOTAL_FRAMES>=PRELOADER_THRESHOLD){
+        preloaderDismissed=true;
+        isReady=true;
+        drawFrame(0);
+        loader.classList.add('hidden');
+        pages[0].classList.add('is-active');
+      }
     }
   }
   await Promise.all(Array.from({length:CONCURRENCY},()=>worker()));
@@ -139,12 +149,14 @@ animate();
 (async function init(){
   resize();
   await loadAllFrames();
-  isReady=true;
-  drawFrame(0);
-  setTimeout(()=>{
+  /* If threshold wasn't reached (tiny frame count), force reveal */
+  if(!preloaderDismissed){
+    preloaderDismissed=true;
+    isReady=true;
+    drawFrame(0);
     loader.classList.add('hidden');
     pages[0].classList.add('is-active');
-  },400);
+  }
 })();
 
 /* ── Contact Form → Firestore + Telegram ── */

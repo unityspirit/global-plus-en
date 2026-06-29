@@ -1,8 +1,8 @@
-/* ─── Unity Spirit Partners — ScrollCanvas Engine (Native Scroll-Snap) ─── */
+/* --- Unity Spirit Partners --- ScrollCanvas Engine (Native Scroll-Snap) --- */
 'use strict';
 
 const TOTAL_FRAMES = 672;
-const LERP = 0.02;
+const LERP = 0.08;
 const CONCURRENCY = 48;
 
 const isMobile = /Mobi|Android|iPhone/i.test(navigator.userAgent) || innerWidth < 768;
@@ -18,12 +18,12 @@ const burger = document.getElementById('burger');
 const mobileNav = document.getElementById('mobileNav');
 const canvas = document.getElementById('scrollCanvas');
 const ctx = canvas.getContext('2d');
-const bottomBar = document.getElementById('bottomBar');
-const bottomBarFill = document.getElementById('bottomBarFill');
 
 /* ── State ── */
 let targetFrame = 0, currentFrame = 0, isReady = false;
+let preloaderDismissed = false;
 const frames = new Array(TOTAL_FRAMES);
+const PRELOADER_THRESHOLD = 10; // dismiss preloader at 10% real
 
 /* ── Canvas sizing ── */
 function resize(){
@@ -52,7 +52,10 @@ function loadFrame(index){
   });
 }
 
-let preloaderDismissed = false;
+/* ── Site loading bar refs ── */
+const siteLoadingBar = document.getElementById('siteLoadingBar');
+const siteLoadingFillInner = document.getElementById('siteLoadingFillInner');
+const siteLoadingText = document.getElementById('siteLoadingText');
 
 async function loadAllFrames(){
   let loaded = 0;
@@ -63,13 +66,32 @@ async function loadAllFrames(){
       if(idx===undefined)return;
       await loadFrame(idx);
       loaded++;
-      const pct=Math.floor((loaded/TOTAL_FRAMES)*100);
-      /* Bottom bar = REAL progress */
-      if(bottomBarFill) bottomBarFill.style.width=pct+'%';
-      if(pct>=100 && bottomBar) setTimeout(function(){bottomBar.classList.add('done')},800);
+      const realPct=Math.floor((loaded/TOTAL_FRAMES)*100);
+
+      if(!preloaderDismissed){
+        /* Phase 1: map 0-10% real → 0-100% visual */
+        const visualPct = Math.min(Math.round((realPct / PRELOADER_THRESHOLD) * 100), 100);
+        loaderFill.style.width = visualPct + '%';
+        loaderPct.textContent = visualPct + '%';
+
+        if(realPct >= PRELOADER_THRESHOLD){
+          preloaderDismissed = true;
+          isReady = true;
+          drawFrame(0);
+          loader.classList.add('hidden');
+          pages[0].classList.add('is-active');
+          /* Show site loading bar for phase 2 */
+          setTimeout(()=>{ siteLoadingBar.classList.add('active'); }, 700);
+        }
+      } else {
+        /* Phase 2: site loading bar 10-100% */
+        const phase2Pct = Math.round(((realPct - PRELOADER_THRESHOLD) / (100 - PRELOADER_THRESHOLD)) * 100);
+        siteLoadingFillInner.style.width = phase2Pct + '%';
+        siteLoadingText.textContent = 'Loading video ' + realPct + '%';
+      }
     }
   }
-  await Promise.all(Array.from({length:CONCURRENCY},function(){return worker()}));
+  await Promise.all(Array.from({length:CONCURRENCY},()=>worker()));
 }
 
 /* ── Draw frame (cover fit) ── */
@@ -143,30 +165,37 @@ animate();
 /* ── Init ── */
 (async function init(){
   resize();
-
-  /* Fake preloader: smooth 0->100% in 2 seconds */
-  var PRELOADER_DURATION = 2000;
-  var preloaderStart = performance.now();
-  function animatePreloader(){
-    var elapsed = performance.now() - preloaderStart;
-    var fakePct = Math.min(100, Math.floor((elapsed / PRELOADER_DURATION) * 100));
-    loaderFill.style.width = fakePct + '%';
-    loaderPct.textContent = fakePct + '%';
-    if(fakePct < 100){
-      requestAnimationFrame(animatePreloader);
-    } else {
-      preloaderDismissed = true;
-      isReady = true;
-      drawFrame(0);
-      loader.classList.add('hidden');
-      pages[0].classList.add('is-active');
-    }
+  await loadAllFrames();
+  /* All frames loaded — hide site loading bar */
+  if(!isReady){
+    isReady = true;
+    drawFrame(0);
+    loader.classList.add('hidden');
+    pages[0].classList.add('is-active');
   }
-  requestAnimationFrame(animatePreloader);
-
-  /* Load frames in background - bottom bar shows real progress */
-  loadAllFrames();
+  siteLoadingText.textContent = 'Loading complete';
+  setTimeout(()=>{ siteLoadingBar.classList.remove('active'); siteLoadingBar.classList.add('done'); }, 800);
 })();
+
+/* ── Contact Form ── */
+const form = document.getElementById('contactForm');
+if (form) {
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const btn = document.getElementById('submitBtn');
+    const name = document.getElementById('inputName').value;
+    const phone = document.getElementById('inputPhone').value;
+    const niche = document.getElementById('inputNiche').value;
+    const msg = `🔔 Новая заявка Глобал Плюс\n👤 ${name}\n📞 ${phone}\n🏷️ Ниша: ${niche}`;
+    fetch(`https://api.telegram.org/bot8584091506:AAFHWXyPuCS-cQnPnPo8Hu5HGJm-0eHrDsw/sendMessage`, {
+      method: 'POST', headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({ chat_id: '8538272428', text: msg })
+    }).catch(() => {});
+    btn.textContent = '✓ Заявка отправлена! Ответим в течение 2 часов.';
+    btn.style.background = '#4FC3F7'; btn.style.color = '#000';
+    setTimeout(() => { btn.textContent = 'Получить бесплатный аудит ниши'; btn.style.background = ''; btn.style.color = ''; }, 4000);
+  });
+}
 
 /* ── Case Video Carousel ── */
 (function initCaseCarousel(){

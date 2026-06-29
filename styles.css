@@ -296,3 +296,8 @@ a.case-card:hover .case-link{color:#fff !important}
 .msg-btn:hover{transform:translateY(-1px);opacity:.9}
 .msg-wa{background:#25D366;color:#fff !important}
 .msg-tg{background:#2AABEE;color:#fff !important}
+
+/* BOTTOM LOADING BAR */
+#bottomBar{position:fixed;bottom:0;left:0;width:100%;height:3px;background:rgba(255,255,255,.1);z-index:9999;opacity:1;transition:opacity .6s}
+#bottomBar.done{opacity:0;pointer-events:none}
+#bottomBarFill{height:100%;width:0%;background:linear-gradient(90deg,#c8a24e,#f5d280,#c8a24e);transition:width .3s;box-shadow:0 0 8px rgba(200,162,78,.5)}

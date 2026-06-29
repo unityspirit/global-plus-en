@@ -53,7 +53,6 @@ function loadFrame(index){
 }
 
 let preloaderDismissed = false;
-const PRELOADER_THRESHOLD = 0.03;
 
 async function loadAllFrames(){
   let loaded = 0;
@@ -65,20 +64,12 @@ async function loadAllFrames(){
       await loadFrame(idx);
       loaded++;
       const pct=Math.floor((loaded/TOTAL_FRAMES)*100);
-      loaderFill.style.width=pct+'%';
-      loaderPct.textContent=pct+'%';
+      /* Bottom bar = REAL progress */
       if(bottomBarFill) bottomBarFill.style.width=pct+'%';
-      if(pct>=100 && bottomBar) setTimeout(()=>bottomBar.classList.add('done'),800);
-      if(!preloaderDismissed && loaded/TOTAL_FRAMES>=PRELOADER_THRESHOLD){
-        preloaderDismissed=true;
-        isReady=true;
-        drawFrame(0);
-        loader.classList.add('hidden');
-        pages[0].classList.add('is-active');
-      }
+      if(pct>=100 && bottomBar) setTimeout(function(){bottomBar.classList.add('done')},800);
     }
   }
-  await Promise.all(Array.from({length:CONCURRENCY},()=>worker()));
+  await Promise.all(Array.from({length:CONCURRENCY},function(){return worker()}));
 }
 
 /* ── Draw frame (cover fit) ── */
@@ -152,71 +143,30 @@ animate();
 /* ── Init ── */
 (async function init(){
   resize();
-  await loadAllFrames();
-  /* If threshold wasn't reached (tiny frame count), force reveal */
-  if(!preloaderDismissed){
-    preloaderDismissed=true;
-    isReady=true;
-    drawFrame(0);
-    loader.classList.add('hidden');
-    pages[0].classList.add('is-active');
+
+  /* Fake preloader: smooth 0->100% in 2 seconds */
+  var PRELOADER_DURATION = 2000;
+  var preloaderStart = performance.now();
+  function animatePreloader(){
+    var elapsed = performance.now() - preloaderStart;
+    var fakePct = Math.min(100, Math.floor((elapsed / PRELOADER_DURATION) * 100));
+    loaderFill.style.width = fakePct + '%';
+    loaderPct.textContent = fakePct + '%';
+    if(fakePct < 100){
+      requestAnimationFrame(animatePreloader);
+    } else {
+      preloaderDismissed = true;
+      isReady = true;
+      drawFrame(0);
+      loader.classList.add('hidden');
+      pages[0].classList.add('is-active');
+    }
   }
+  requestAnimationFrame(animatePreloader);
+
+  /* Load frames in background - bottom bar shows real progress */
+  loadAllFrames();
 })();
-
-/* ── Contact Form → Firestore + Telegram ── */
-const form = document.getElementById('contactForm');
-if (form) {
-  form.addEventListener('submit', async e => {
-    e.preventDefault();
-    const btn = document.getElementById('submitBtn');
-    const name = document.getElementById('inputName').value.trim();
-    const phone = document.getElementById('inputPhone').value.trim();
-    const niche = document.getElementById('inputNiche').value;
-    const budget = document.getElementById('inputBudget').value;
-    const message = document.getElementById('inputMessage').value.trim();
-
-    if (!name || !phone) return;
-    btn.disabled = true;
-    btn.textContent = 'Sending...';
-
-    const lead = {
-      name, phone, niche, budget, message,
-      source: 'unityspiritpartners.com',
-      createdAt: new Date().toISOString(),
-      status: 'new'
-    };
-
-    /* 1. Save to Firestore */
-    try {
-      if (window.db) {
-        await window.db.collection('leads').add(lead);
-      }
-    } catch (err) { console.warn('Firestore:', err); }
-
-    /* 2. Send to Telegram */
-    try {
-      const TG_TOKEN = '8584091506:AAFHWXyPuCS-cQnPnPo8Hu5HGJm-0eHrDsw';
-      const TG_CHAT = '8538272428';
-      if (TG_CHAT) {
-        const text = `🔔 New Lead — Unity Spirit Partners\n👤 ${name}\n📞 ${phone}\n🏷️ Niche: ${niche || '—'}\n💰 Budget: ${budget || '—'}\n💬 ${message || '—'}`;
-        await fetch(`https://api.telegram.org/bot${TG_TOKEN}/sendMessage`, {
-          method: 'POST', headers: {'Content-Type':'application/json'},
-          body: JSON.stringify({ chat_id: TG_CHAT, text, parse_mode: 'HTML' })
-        });
-      }
-    } catch (err) { console.warn('Telegram:', err); }
-
-    /* 3. Success */
-    btn.textContent = '✓ Request submitted! We\'ll respond within 2 hours.';
-    btn.style.background = '#25D366'; btn.style.color = '#fff';
-    form.reset();
-    setTimeout(() => {
-      btn.textContent = 'Get a Free Niche Audit';
-      btn.style.background = ''; btn.style.color = '';
-      btn.disabled = false;
-    }, 5000);
-  });
-}
 
 /* ── Case Video Carousel ── */
 (function initCaseCarousel(){

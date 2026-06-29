@@ -18,6 +18,8 @@ const burger = document.getElementById('burger');
 const mobileNav = document.getElementById('mobileNav');
 const canvas = document.getElementById('scrollCanvas');
 const ctx = canvas.getContext('2d');
+const bottomBar = document.getElementById('bottomBar');
+const bottomBarFill = document.getElementById('bottomBarFill');
 
 /* ── State ── */
 let targetFrame = 0, currentFrame = 0, isReady = false;
@@ -65,6 +67,8 @@ async function loadAllFrames(){
       const pct=Math.floor((loaded/TOTAL_FRAMES)*100);
       loaderFill.style.width=pct+'%';
       loaderPct.textContent=pct+'%';
+      if(bottomBarFill) bottomBarFill.style.width=pct+'%';
+      if(pct>=100 && bottomBar) setTimeout(()=>bottomBar.classList.add('done'),800);
       if(!preloaderDismissed && loaded/TOTAL_FRAMES>=PRELOADER_THRESHOLD){
         preloaderDismissed=true;
         isReady=true;

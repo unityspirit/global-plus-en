@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=1782772992">
+  <link rel="stylesheet" href="styles.css?v=1782773553">
 </head>
 <body>
 
@@ -28,6 +28,12 @@
     </div>
   </div>
 
+
+  <!-- SITE LOADING BAR (Phase 2: 10-100%) -->
+  <div id="siteLoadingBar" class="site-loading-bar">
+    <div class="site-loading-fill" id="siteLoadingFill"><div class="site-loading-fill-inner" id="siteLoadingFillInner"></div></div>
+    <span class="site-loading-text" id="siteLoadingText">Loading video...</span>
+  </div>
   <!-- CANVAS -->
   <canvas id="scrollCanvas"></canvas>
 
@@ -575,7 +581,7 @@
     });
     window.db = firebase.firestore();
   </script>
-  <script src="app.js?v=1782772992"></script>
+  <script src="app.js?v=1782773553"></script>
   <!-- Chatwoot Live Chat -->
   <script>
     (function(d,t) {
@@ -593,8 +599,6 @@
       }
     })(document,"script");
   </script>
-  <!-- BOTTOM LOADING BAR -->
-  <div id="bottomBar"><div id="bottomBarFill"></div></div>
 </body>
 </html>
 
